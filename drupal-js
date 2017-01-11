@@ -1,0 +1,27 @@
+/* Code to display alert when checkbox is selected */
+
+// Add js to drupal form. (.module)
+$form['#attached']['js'][] = array(
+  'data' => drupal_get_path('module', 'sdc_users') . '/js/dependecy.js',
+  'type' => 'file',
+);
+
+
+
+// File with js. Pathname to file modulefolder/js/dependecy.js 
+(function($) {
+  Drupal.behaviors.sdc_users = {
+    attach: function (context, settings) {
+      // On checkbox change, set attributes. #edit-roles-6 is id of checkbox.
+      $('#edit-roles-6').change(function () {
+        if ($('#edit-roles-6').is(":checked")) {
+        // Set attributes if is superadministrador.
+        alert("You have selected to turn on checkout.");
+        } else {
+          // Set attributes if is not super administrador.
+          alert("You have selected to turn off checkout.");
+        }
+      });
+    }
+  };
+})(jQuery);
